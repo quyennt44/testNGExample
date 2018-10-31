@@ -31,12 +31,14 @@ public class TestNgMavenExample {
 	
 	@Test
 	public void test5() {
+		
+		
 		System.out.println("This is test ");
 	}
 	
 	@Test
 	public void test6() {
 		System.out.println("This is test 6");
-		assert(false);
+//		assert(false);
 	}
 }
