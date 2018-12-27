@@ -1,20 +1,20 @@
-    node('master') {
-      stage('Check out') {
-        git 'https://github.com/quyennt44/testNGExample.git'
-      }
-
-      stage('Run test') {
-      try{
-         sh "mvn clean test -DTestNG-FILE-NAME=src/test/resources/testng.xml"	
-      }
-      catch(err){
-      }
-      finally{       
-      }  
-      }
-      stage('Publish report'){
-	always {
-	    step([$class: 'Publisher'])
-	}
-	}
-      }
+pipeline {
+    agent any
+    stages {
+        stage('Check out') {
+            steps {
+                git 'https://github.com/quyennt44/testNGExample.git'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "mvn clean test -DTestNG-FILE-NAME=src/test/resources/testng.xml"	
+            }
+        }     
+    }
+    post {
+        always {
+             step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
+        }     
+    }
+}
