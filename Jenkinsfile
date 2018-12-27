@@ -12,9 +12,9 @@
       finally{       
       }  
       }
-	  stage('Publish report'){
-		always {
-		    step([$class: 'Publisher'])
-		}
-	  }
+      stage('Publish report'){
+	always {
+	    step([$class: 'Publisher'])
+	}
+	}
       }
