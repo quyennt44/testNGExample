@@ -9,6 +9,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh "mvn clean test -DTestNG-FILE-NAME=src/test/resources/testng.xml"	
+                sh "pwd"
             }
         }     
     }
